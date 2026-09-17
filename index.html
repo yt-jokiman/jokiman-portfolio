@@ -2,29 +2,127 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Jokiman</title>
-  <style>
-    * { box-sizing: border-box; }
-    body {
-      margin: 0;
-      min-height: 100vh;
-      display: grid;
-      place-items: center;
-      background: #08090c;
-      color: #fff;
-      font-family: Arial, sans-serif;
-    }
-    main { padding: 32px; text-align: center; }
-    h1 { margin: 0; font-size: clamp(56px, 12vw, 120px); }
-    p { color: #aeb4c0; font-size: 18px; }
-    span { color: #72ff9d; }
-  </style>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Jokiman — Esports Player, Content Creator, Foram Owner, Tournament & Community Organizer.">
+  <meta name="theme-color" content="#080a09">
+  <title>JOKIMAN. — Esports Portfolio</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23080a09'/%3E%3Cpath d='M39 12v29c0 9-5 13-13 13-7 0-12-4-13-11l10-2c1 3 2 4 4 4 2 0 3-2 3-5V12z' fill='%23f4f7f5'/%3E%3Ccircle cx='49' cy='49' r='6' fill='%23baff29'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="styles.css">
+  <script src="script.js" defer></script>
 </head>
 <body>
-  <main>
-    <h1>JOKIMAN<span>.</span></h1>
-    <p>Overwatch Player / IGL / Foram e-sports</p>
+  <a class="skip-link" href="#main">本文へ移動</a>
+  <div class="progress" aria-hidden="true"></div>
+  <header>
+    <nav class="nav container" aria-label="メインナビゲーション">
+      <a class="brand" href="#top" aria-label="Jokiman トップへ">JOKIMAN<span>.</span></a>
+      <button class="menu-button" type="button" aria-expanded="false" aria-controls="nav-links" aria-label="メニューを開く">MENU</button>
+      <div class="nav-links" id="nav-links">
+        <a href="#about">About</a><a href="#career">Career</a><a href="#projects">Projects</a><a href="#vision">Vision</a><a href="#contact">Contact</a>
+      </div>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section class="hero" id="top" aria-labelledby="hero-title">
+      <div class="hero-inner container">
+        <p class="eyebrow">Esports / Japan</p>
+        <h1 id="hero-title">JOKIMAN<span>.</span></h1>
+        <div class="hero-bottom">
+          <div class="role-list" aria-label="活動領域"><span>Esports Player</span><span>Content Creator</span><span>Foram Owner</span><span>Organizer</span></div>
+          <p class="hero-statement"><strong>競技する。チームを作る。大会を作る。</strong><br>Overwatchを軸に、プレイヤーとオーガナイザーの両側からeスポーツに関わる。</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="container">
+        <div class="section-head reveal"><span class="section-index">01 / ABOUT</span><h2>Beyond<br>one role.</h2></div>
+        <div class="about-grid reveal">
+          <p class="about-lead">Jokimanは、競技の中だけに留まらない。<em>選手・チームオーナー・大会創設者</em>として、それぞれの視点を行き来しながら活動しています。</p>
+          <div class="about-copy">
+            <p>OverwatchではMain Supportとして競技に参加。チーム内ではプレイだけでなく、戦術設計やチーム運営にも取り組んでいます。</p>
+            <p>コミュニティ側では、大会の立ち上げと運営を経験。競技を続ける人が本気で挑戦できる場所を、自分たちの手で作ってきました。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="career">
+      <div class="container">
+        <div class="section-head reveal"><span class="section-index">02 / ESPORTS CAREER</span><h2>Built through<br>competition.</h2></div>
+        <div class="timeline reveal">
+          <article class="timeline-item">
+            <div class="timeline-year">EARLY</div><div class="timeline-title"><h3>Fortnite</h3><span>Player / Creator</span></div>
+            <div class="timeline-body"><p>小学生から中学生にかけて競技・配信活動を展開。競技者としての挑戦と、視聴者へ届ける活動の原点。</p>
+              <ul class="facts"><li>YouTube 約1,900登録</li><li>最大同時視聴 約60</li><li>Duo Hype Cup Asia Finals #10</li><li>Crazy Squad</li><li>Arcana Gaming</li></ul>
+            </div>
+          </article>
+          <article class="timeline-item">
+            <div class="timeline-year">2022.09</div><div class="timeline-title"><h3>Foram</h3><span>Founder / Owner</span></div>
+            <div class="timeline-body"><p>2022年9月1日にeスポーツチームForamを設立。2024年4月1日にリブランディングし、現在はOverwatch部門を中心に活動。</p></div>
+          </article>
+          <article class="timeline-item">
+            <div class="timeline-year">NOW</div><div class="timeline-title"><h3>Overwatch</h3><span>Main Support</span></div>
+            <div class="timeline-body"><p>Main Supportとして、チーム運営と並行して選手活動。OWCS 2026 Stage 1に参加。</p>
+              <ul class="facts"><li>Main Support</li><li>OWCS 2026 Stage 1</li><li>Team Management</li></ul>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <div class="container">
+        <div class="section-head reveal"><span class="section-index">03 / PROJECTS</span><h2>Creating the<br>next arena.</h2></div>
+        <div class="project-grid reveal">
+          <article class="project-card"><span class="card-num">PROJECT 01</span><h3>Foram</h3><span class="card-role">Founder / Owner</span><p>2022年設立のeスポーツチーム。Overwatch部門を中心に、競技力とチームとしての価値を高める活動を続けています。</p><span class="card-status">Details coming later</span></article>
+          <article class="project-card"><span class="card-num">PROJECT 02</span><h3>Japan<br>Overwatch<br>Series</h3><span class="card-role">Founder / Organizer</span><p>Overwatchコミュニティ大会。第1期では23チームから応募を受け、8チームを採択。</p><span class="card-status">Details coming later</span></article>
+          <article class="project-card"><span class="card-num">PROJECT 03</span><h3>NOBORI</h3><span class="card-role">Founder</span><p>Japan Overwatch Seriesを起点とする、大規模Overwatch大会プロジェクト。Founderとして立ち上げに関与。</p><span class="card-status">Details coming later</span></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="content">
+      <div class="container">
+        <div class="section-head reveal"><span class="section-index">04 / CONTENT</span><h2>Thoughts in<br>public.</h2></div>
+        <div class="content-layout reveal">
+          <p class="content-note">競技、チーム運営、大会づくりから得た知見を、今後ここにまとめていきます。</p>
+          <div class="content-slots">
+            <div class="content-slot"><div><strong>note</strong><span>Articles / Essays</span></div><span class="coming">Coming soon</span></div>
+            <div class="content-slot"><div><strong>YouTube</strong><span>Video / Archive</span></div><span class="coming">Coming soon</span></div>
+            <div class="content-slot"><div><strong>More</strong><span>New formats</span></div><span class="coming">Coming soon</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="vision" id="vision">
+      <div class="container">
+        <div class="section-head reveal"><span class="section-index">05 / VISION</span><h2>Where I'm<br>heading.</h2></div>
+        <div class="vision-copy reveal">
+          <p>世界で競争できるチームを作る。自分自身も、選手としてさらに高い場所へ行く。</p>
+          <p>競技、チーム運営、大会運営。そのすべてを経験しているからこそ見える課題があります。ひとつの立場に閉じず、日本のOverwatch競技とコミュニティが前へ進むための活動を続けます。</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container">
+        <div class="contact-wrap reveal">
+          <span class="section-index">06 / CONTACT & LINKS</span><h2 class="contact-title">LET'S<br>CONNECT<span>.</span></h2>
+          <div class="links">
+            <div class="link-row"><span>X</span><span>Coming soon</span></div>
+            <a class="link-row" href="https://github.com/yt-jokiman" target="_blank" rel="noopener noreferrer"><span>GitHub</span><span>Open ↗</span></a>
+            <div class="link-row"><span>note</span><span>Coming soon</span></div>
+            <div class="link-row"><span>YouTube</span><span>Coming soon</span></div>
+            <div class="link-row"><span>Foram</span><span>Coming soon</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
   </main>
+
+  <footer><div class="footer-inner container"><span>© <span id="year"></span> Jokiman</span><span>Esports / Japan</span></div></footer>
 </body>
 </html>
