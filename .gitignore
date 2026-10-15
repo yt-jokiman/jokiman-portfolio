@@ -1,0 +1,9 @@
+# Spotify exports contain personal data. Only music/data.json is public.
+Streaming_History_*.json
+ReadMeFirst_ExtendedStreamingHistory.pdf
+upload/
+node_modules/
+.vercel/
+.sites-runtime/
+.env
+.env.*

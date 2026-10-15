@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#080a09">
+  <meta name="description" content="JokimanのSpotifyリスニング記録。2021年からの音楽を、年別ランキングと再生時間で振り返る。">
+  <meta name="robots" content="noindex, follow">
+  <title>Listening Archive — JOKIMAN.</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23080a09'/%3E%3Cpath d='M39 12v29c0 9-5 13-13 13-7 0-12-4-13-11l10-2c1 3 2 4 4 4 2 0 3-2 3-5V12z' fill='%23f4f7f5'/%3E%3Ccircle cx='49' cy='49' r='6' fill='%23baff29'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="music.css">
+  <script type="module" src="music.mjs"></script>
+</head>
+<body>
+  <a class="skip" href="#archive">記録へ移動</a>
+  <header class="header wrap"><a class="brand" href="/">JOKIMAN<span>.</span></a><span class="header-label">PERSONAL / LISTENING ARCHIVE</span><a class="back" href="/">← Portfolio</a></header>
+  <main class="wrap" id="archive">
+    <div class="intro"><p class="eyebrow">THE SOUNDTRACK, SINCE 2021</p><h1>ON REPEAT<span>.</span></h1><div class="intro-bottom"><p>何度も聴いた曲に、<br>自分の時間が残っている。</p><div class="archive-meta"><span>SPOTIFY LISTENING HISTORY</span><span id="date-range">履歴を読み込んでいます…</span><span>JOKIMAN / PERSONAL RECORDS</span></div></div></div>
+    <div class="load-status" id="load-status" role="status">記録を集計しています…</div>
+    <noscript><p class="notice">記録の表示にはJavaScriptを有効にしてください。</p></noscript>
+    <div id="dashboard" hidden>
+      <section class="controls" aria-label="表示条件">
+        <div class="control-group"><label for="year">期間</label><select id="year"><option value="all">全期間</option></select></div>
+        <div class="control-group artist-control"><label for="artist">アーティスト</label><select id="artist"><option value="">すべてのアーティスト</option></select></div>
+        <button class="reset" id="reset" type="button">条件をリセット</button>
+      </section>
+      <section class="overview" aria-label="リスニング概要" aria-live="polite">
+        <div class="metric main-metric"><span class="metric-label">LISTENING TIME</span><p><strong id="total-hours">—</strong><span>時間</span></p><span class="metric-foot" id="scope-label">全期間 / 音楽のみ</span></div>
+        <div class="metric"><span class="metric-label">PLAYS / 30秒以上</span><p><strong id="total-plays">—</strong><span>回</span></p><span class="metric-foot">短いスキップは回数から除外</span></div>
+        <div class="metric"><span class="metric-label">DISCOVERED</span><p><strong id="total-tracks">—</strong><span>曲</span></p><span class="metric-foot" id="artist-count">—</span></div>
+      </section>
+      <section class="favorites" aria-labelledby="favorites-title">
+        <div class="section-heading"><div><p class="eyebrow">THE REGULARS</p><h2 id="favorites-title">いつもの音楽。</h2></div><span class="subtle" id="favorites-period">全期間の記録</span></div>
+        <div class="favorite-grid" id="favorite-grid"></div>
+      </section>
+      <section class="timeline-section" aria-labelledby="timeline-title">
+        <div class="section-heading"><div><p class="eyebrow">LISTENING TIMELINE</p><h2 id="timeline-title">音楽と過ごした時間。</h2></div><span class="subtle">月別 / 時間</span></div>
+        <p class="chart-caption" id="chart-caption">棒に触れると月ごとの記録を表示します。横にスクロールできます。</p>
+        <div class="chart-scroll" tabindex="0" aria-label="月別再生時間グラフ。横スクロール可能"><div class="chart" id="chart"></div></div>
+        <p class="chart-readout" id="chart-readout" aria-live="polite"></p>
+        <details class="monthly-details"><summary>月別データを一覧で見る</summary><div class="month-data" id="month-data"></div></details>
+      </section>
+      <section class="ranking-section" aria-labelledby="ranking-title">
+        <div class="section-heading"><div><p class="eyebrow">PERSONAL CHARTS</p><h2 id="ranking-title">繰り返した、その順番。</h2></div><span class="subtle" id="result-count"></span></div>
+        <div class="ranking-controls">
+          <div class="switcher" role="group" aria-label="ランキングの種類"><button type="button" data-view="artists" aria-pressed="true">アーティスト</button><button type="button" data-view="tracks" aria-pressed="false">曲</button></div>
+          <label class="search"><span class="sr-only">曲名・アーティストを検索</span><input type="search" id="search" placeholder="曲名・アーティストを検索" autocomplete="off"></label>
+          <label class="sort"><span class="sr-only">並び順</span><select id="sort"><option value="ms">再生時間が多い順</option><option value="plays">再生回数が多い順</option></select></label>
+        </div>
+        <p class="ranking-help">アーティスト名を押すと、その人の曲を表示。曲名からSpotifyへ移動できます。</p>
+        <div class="ranking-header" aria-hidden="true"><span>#</span><span id="rank-type-label">ARTIST</span><span>TIME / PLAYS</span></div>
+        <ol class="ranking-list" id="ranking-list"></ol>
+        <p class="empty" id="empty" hidden>該当する記録がありません。期間や検索条件を変えてみてください。</p>
+        <button class="show-more" id="show-more" type="button">もっと見る</button>
+      </section>
+      <section class="method" aria-labelledby="method-title"><p class="eyebrow">ABOUT THESE RECORDS</p><h2 id="method-title">数字の読み方。</h2><div class="method-grid"><p>Spotifyから取得した拡張ストリーミング履歴のスナップショットです。リアルタイム更新やSpotify公式の年間まとめとは異なります。</p><ul><li>再生時間：短いスキップも含む実再生時間（ms_played）の合計。</li><li>再生回数：1件あたり30秒以上再生した記録の数。完走数やSpotify公式の再生数ではありません。</li><li>曲数：再生時間がある「アーティスト名＋曲名」の組み合わせ。同名の別アルバム版はまとめて集計。</li><li>月・年：再生終了時刻を日本時間へ変換して分類。年の途中で終わるデータは、その時点までの累計です。</li><li>楽曲名とアーティスト名がある音楽のみを集計。ポッドキャスト等・完全重複・プライベートセッションは除外。</li><li>IPアドレス、端末情報、個別の再生日時、元の履歴ファイルは公開していません。</li></ul></div><p class="audit" id="audit"></p></section>
+    </div>
+  </main>
+  <footer class="footer wrap"><a class="brand" href="/">JOKIMAN<span>.</span></a><span>LISTENING ARCHIVE / NOT AFFILIATED WITH SPOTIFY</span><a href="#archive">Back to top ↑</a></footer>
+</body>
+</html>
